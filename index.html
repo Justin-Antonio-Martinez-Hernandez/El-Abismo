@@ -1,27 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Deep Search | Buscamos a fondo para revelar la verdad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>This is the about section.</p>
-        </section>
-        <section>
-            <h2>Projects</h2>
-            <p>Here are some projects I've worked on.</p>
-        </section>
-    </main>
-    <footer>
-        <p>© 2026 Justin Antonio Martinez Hernandez</p>
-    </footer>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1 class="logo">Deep Search</h1>
+  <p class="lema">Buscamos a fondo para revelar la verdad</p>
+  <div class="wave"></div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+<header>
+  <div class="logo-header">Deep Search</div>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre">Sobre nosotros</a>
+    <a href="#noticias">Noticias</a>
+    <a href="#internacional">Internacional</a>
+    <a href="#nacional">Nacional</a>
+    <a href="#faq">Preguntas frecuentes</a>
+    <a href="#contacto">Contáctenos</a>
+  </nav>
+</header>
+
+<!-- INICIO -->
+<section id="inicio" class="section">
+  <h1>Bienvenido a Deep Search</h1>
+  <p>
+    Deep Search es un medio de investigación dedicado a analizar, verificar
+    y confirmar la información desde sus fuentes más profundas para brindar
+    noticias confiables, claras y verificadas.
+  </p>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="sobre" class="section">
+  <h2>Sobre nosotros</h2>
+  <p>
+    Somos un equipo comprometido con el periodismo de investigación.
+    Nuestro objetivo es analizar cada fuente, confirmar cada dato y
+    presentar información basada en hechos reales.
+  </p>
+</section>
+
+<!-- NOTICIAS -->
+<section id="noticias" class="section">
+  <h2>Noticias destacadas</h2>
+
+  <div class="news-container">
+    <div class="news-card" onclick="expandir(this)">
+      <div class="card-badge">Energía</div>
+      <div class="card-title">Nueva investigación energética global</div>
+      <div class="card-date">📅 11 de febrero de 2026</div>
+      <div class="card-excerpt">
+        Científicos han confirmado nuevas fuentes de energía sostenible.
+      </div>
+      <div class="contenido">
+        Esta investigación se basó en múltiples análisis internacionales
+        para confirmar la viabilidad energética.
+      </div>
+      <div class="card-footer">
+        <a href="#" class="read-more">Leer más →</a>
+        <span class="card-views">👁️ 1.2K vistas</span>
+      </div>
+    </div>
+
+    <div class="news-card" onclick="expandir(this)">
+      <div class="card-badge">Arqueología</div>
+      <div class="card-title">Descubrimiento arqueológico importante</div>
+      <div class="card-date">📅 10 de febrero de 2026</div>
+      <div class="card-excerpt">
+        Investigadores descubrieron restos históricos que aportan nueva información.
+      </div>
+      <div class="contenido">
+        Investigadores descubrieron restos históricos que aportan nueva
+        información sobre civilizaciones antiguas.
+      </div>
+      <div class="card-footer">
+        <a href="#" class="read-more">Leer más →</a>
+        <span class="card-views">👁️ 856 vistas</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- INTERNACIONAL -->
+<section id="internacional" class="section">
+  <h2>Internacional</h2>
+
+  <div class="news-container">
+    <div class="news-card" onclick="expandir(this)">
+      <div class="card-badge">Política</div>
+      <div class="card-title">Últimas noticias internacionales</div>
+      <div class="card-date">📅 09 de febrero de 2026</div>
+      <div class="card-excerpt">
+        Nuevas políticas globales están siendo evaluadas tras investigaciones recientes.
+      </div>
+      <div class="contenido">
+        Nuevas políticas globales están siendo evaluadas tras investigaciones recientes
+        por organizaciones internacionales.
+      </div>
+      <div class="card-footer">
+        <a href="#" class="read-more">Leer más →</a>
+        <span class="card-views">👁️ 2.1K vistas</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- NACIONAL -->
+<section id="nacional" class="section">
+  <h2>Nacional</h2>
+
+  <div class="news-container">
+    <div class="news-card" onclick="expandir(this)">
+      <div class="card-badge">Reformas</div>
+      <div class="card-title">Noticias nacionales recientes</div>
+      <div class="card-date">📅 08 de febrero de 2026</div>
+      <div class="card-excerpt">
+        Nuevas reformas están siendo analizadas por expertos nacionales.
+      </div>
+      <div class="contenido">
+        Nuevas reformas están siendo analizadas por expertos nacionales
+        en diferentes sectores de la economía.
+      </div>
+      <div class="card-footer">
+        <a href="#" class="read-more">Leer más →</a>
+        <span class="card-views">👁️ 945 vistas</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <h2>Preguntas frecuentes</h2>
+  <p>
+    <strong>¿Cómo investigamos?</strong><br>
+    Analizamos fuentes confiables, verificamos datos y confirmamos hechos.
+  </p>
+  <p>
+    <strong>¿Cuál es nuestro compromiso?</strong><br>
+    Mantener la integridad periodística y la precisión en cada noticia.
+  </p>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section">
+  <h2>Contáctenos</h2>
+  <p>📧 Email: contacto@deepsearch.com</p>
+  <p>📱 Teléfono: +1 (555) 123-4567</p>
+  <p>📍 Ubicación: Todo el mundo</p>
+</section>
+
+<footer>
+  <p>© 2026 Deep Search - Periodismo de investigación</p>
+  <p><a href="#inicio">Volver al inicio</a> | <a href="#contacto">Contacto</a></p>
+</footer>
+
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
 </body>
 </html>
