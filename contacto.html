@@ -5,125 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deep Search | Contáctenos</title>
 
+<link rel="stylesheet" href="styles.css">
+
 <style>
-
-/* ===== RESET ===== */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Segoe UI",Arial,sans-serif;
-}
-
 body{
 background:#0a0f1c;
 color:white;
+font-family:Segoe UI, Arial, sans-serif;
 }
 
-/* ===== HEADER ===== */
-
 header{
-background:rgba(10,20,40,0.95);
+background:#081426;
 padding:15px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-border-bottom:1px solid #1e3a5f;
-position:sticky;
-top:0;
 }
 
-.logo-header{
-font-size:28px;
-font-weight:bold;
+.logo{
 color:#4da6ff;
+font-size:24px;
+font-weight:bold;
 }
 
 nav a{
-margin:0 15px;
-text-decoration:none;
 color:white;
-transition:0.3s;
+margin-left:20px;
+text-decoration:none;
 }
 
 nav a:hover{
 color:#4da6ff;
 }
 
-/* ===== MAIN ===== */
-
 .container{
 max-width:600px;
-margin:auto;
-padding:60px 30px;
-text-align:center;
+margin:80px auto;
+background:#081426;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,119,255,0.3);
 }
 
-.container h1{
+h1{
 color:#4da6ff;
 margin-bottom:10px;
 }
 
-.container p{
-color:#aaa;
-margin-bottom:30px;
+p{
+color:#ccc;
+margin-bottom:20px;
 }
 
-/* ===== FORM ===== */
-
-input{
+input, textarea{
 width:100%;
-padding:15px;
+padding:12px;
 margin-bottom:15px;
 border:none;
-border-radius:8px;
-font-size:16px;
-background:#111a2e;
+border-radius:6px;
+background:#0a0f1c;
 color:white;
 }
 
 button{
 width:100%;
-padding:15px;
+padding:12px;
 border:none;
-border-radius:8px;
+border-radius:6px;
 background:#4da6ff;
 color:white;
 font-size:16px;
 cursor:pointer;
-transition:0.3s;
 }
 
 button:hover{
 background:#0077ff;
 }
 
-/* ===== SUCCESS MESSAGE ===== */
-
-.success{
-margin-top:20px;
-color:#4da6ff;
-display:none;
-font-weight:bold;
-animation:fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
-}
-
-/* ===== FOOTER ===== */
-
 footer{
-background:#050a14;
-padding:20px;
 text-align:center;
+margin-top:40px;
 color:#888;
-margin-top:50px;
 }
-
 </style>
 
 </head>
@@ -131,7 +94,7 @@ margin-top:50px;
 
 <header>
 
-<div class="logo-header">Deep Search</div>
+<div class="logo">Deep Search</div>
 
 <nav>
 <a href="index.html">Inicio</a>
@@ -143,19 +106,18 @@ margin-top:50px;
 
 <div class="container">
 
-<h1>Suscríbete a Deep Search</h1>
+<h1>Suscríbete</h1>
 
 <p>
-Ingresa tu correo electrónico para recibir noticias, investigaciones
-y actualizaciones exclusivas.
+Pon tu correo para inscribirte y recibir noticias de Deep Search.
 </p>
 
-<form onsubmit="suscribir(event)">
+<form id="formSuscripcion" onsubmit="suscribirse(event)">
 
 <input 
 type="email" 
-id="correo" 
-placeholder="Ingresa tu correo electrónico"
+id="email" 
+placeholder="Tu correo electrónico"
 required
 >
 
@@ -165,41 +127,14 @@ Suscribirse
 
 </form>
 
-<div class="success" id="mensaje">
-
-Gracias por suscribirte a Deep Search.  
-Recibirás nuestras noticias pronto.
-
-</div>
-
 </div>
 
 <footer>
-
-© 2026 Deep Search  
-deepsearchnoticias@gmail.com  
-
+© 2026 Deep Search | deepsearchnoticias@gmail.com
 </footer>
 
-<script>
-
-function suscribir(event){
-
-event.preventDefault();
-
-const correo = document.getElementById("correo").value;
-
-if(correo !== ""){
-
-document.getElementById("mensaje").style.display = "block";
-
-document.getElementById("correo").value = "";
-
-}
-
-}
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
