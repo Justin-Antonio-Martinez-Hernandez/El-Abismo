@@ -1,43 +1,97 @@
 // ===============================
-// CONFIGURACIÓN DEEP SEARCH
+// DEEP SEARCH - SCRIPT PRINCIPAL
 // ===============================
 
-// Google Client ID (para login con Google si lo usas)
-const googleClientId = '1060237405695-v3sgkhm66lcbeshb7tq21cs46ih8epiv.apps.googleusercontent.com';
 
-// Configuración EmailJS
+// ===============================
+// CONFIGURACIÓN EMAILJS
+// ===============================
+
 const emailJsConfig = {
     service_id: 'service_n844fiv',
     template_id: 'template_a6qb2tb',
     public_key: 'yTowpQuz0iMmDl3'
 };
 
+
 // ===============================
 // INICIALIZAR EMAILJS
 // ===============================
 
 (function () {
-    emailjs.init(emailJsConfig.public_key);
+
+    if (typeof emailjs !== "undefined") {
+
+        emailjs.init(emailJsConfig.public_key);
+
+        console.log("EmailJS iniciado correctamente");
+
+    } else {
+
+        console.error("EmailJS no está cargado");
+
+    }
+
 })();
 
 
 // ===============================
-// FORMULARIO DE CONTACTO
+// INTRO ANIMACIÓN (INDEX)
 // ===============================
 
-function enviarMensaje(event) {
+window.addEventListener("load", function () {
+
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("main");
+
+    if (intro && main) {
+
+        setTimeout(function () {
+
+            intro.style.display = "none";
+            main.style.display = "block";
+
+        }, 5000);
+
+    }
+
+});
+
+
+// ===============================
+// BOTÓN IR A NOTICIAS
+// ===============================
+
+function irNoticias() {
+
+    window.location.href = "noticias.html";
+
+}
+
+
+// ===============================
+// FORMULARIO SUSCRIPCIÓN
+// ===============================
+
+function suscribirse(event) {
 
     event.preventDefault();
 
+    const emailInput = document.getElementById("email");
+
+    if (!emailInput) {
+
+        alert("Campo de correo no encontrado");
+        return;
+
+    }
+
     const parametros = {
 
-        nombre: document.getElementById("nombre").value,
-
-        email: document.getElementById("email").value,
-
-        mensaje: document.getElementById("mensaje").value
+        email: emailInput.value
 
     };
+
 
     emailjs.send(
         emailJsConfig.service_id,
@@ -46,17 +100,42 @@ function enviarMensaje(event) {
     )
     .then(function () {
 
-        alert("Mensaje enviado correctamente");
+        alert("✅ Gracias por suscribirte a Deep Search");
 
-        document.getElementById("contactForm").reset();
+        document.getElementById("formSuscripcion").reset();
 
     })
     .catch(function (error) {
 
-        alert("Error al enviar el mensaje");
+        alert("❌ Error al enviar el correo");
 
         console.log(error);
 
     });
 
 }
+
+
+// ===============================
+// EFECTOS VISUALES NOTICIAS
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const cards = document.querySelectorAll(".news-card");
+
+    cards.forEach(card => {
+
+        card.addEventListener("click", function () {
+
+            card.classList.add("animate-pulse");
+
+            setTimeout(() => {
+                card.classList.remove("animate-pulse");
+            }, 1000);
+
+        });
+
+    });
+
+});
