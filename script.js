@@ -4,7 +4,7 @@
 
 const emailJsConfig = {
 
-    service_id: 'service_n844fiv',
+    service_id: 'service_pslywcf',
 
     template_id: 'template_a6qb2tb',
 
