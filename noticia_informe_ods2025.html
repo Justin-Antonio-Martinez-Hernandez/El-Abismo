@@ -3,215 +3,399 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Informe ODS 2025 | El Abismo</title>
 
-<!-- FUENTES -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
 <style>
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Roboto', sans-serif;
+
+/* VARIABLES */
+
+:root{
+--bg:#0b0f1a;
+--card:#121a2f;
+--text:white;
+--accent:#ff7a00;
+--accent2:#a855f7;
 }
 
+.light{
+--bg:#f4f7fb;
+--card:white;
+--text:black;
+--accent:#ff6a00;
+--accent2:#7c3aed;
+}
+
+/* BASE */
+
 body{
-  background:#0b1220;
-  color:white;
-  line-height:1.7;
+margin:0;
+font-family:Roboto;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+overflow-x:hidden;
+}
+
+#particles{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--accent);
+}
+
+.logo{
+font-family:Montserrat;
+font-size:28px;
+color:var(--accent);
+}
+
+.toggle{
+background:linear-gradient(45deg,var(--accent),var(--accent2));
+border:none;
+padding:10px 20px;
+border-radius:10px;
+color:white;
+cursor:pointer;
 }
 
 /* HERO */
+
 .hero{
-  height:450px;
-  background:url("https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+height:400px;
+background:url("https://images.unsplash.com/photo-1466611653911-95081537e5b7") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .hero h1{
-  background:rgba(0,0,0,0.8);
-  color:white;
-  padding:25px 40px;
-  font-family:'Montserrat', sans-serif;
-  font-size:36px;
-  border-radius:10px;
-  text-align:center;
-  opacity:0;
-  animation:fadeIn 1.5s forwards;
+background:rgba(0,0,0,0.7);
+padding:25px;
+border-radius:10px;
+animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1;}
 }
 
 /* CONTENT */
-.content{
-  max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
 }
 
 /* CARDS */
+
 .card{
-  background:#111a2e;
-  padding:25px;
-  margin:20px 0;
-  border-radius:10px;
-  transition:0.4s, transform 0.4s;
-  opacity:0;
-  transform:translateY(40px);
+background:var(--card);
+padding:30px;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
 }
 
 .card.show{
-  opacity:1;
-  transform:translateY(0);
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  background:#1a2035;
-}
-
-.card h2{
-  color:#4da6ff;
-  margin-bottom:15px;
-}
-
-.card p, .card ul{
-  color:#ddd;
-  margin-bottom:10px;
-}
-
-.card ul{
-  padding-left:20px;
+transform:scale(1.02);
 }
 
 .card img{
-  width:100%;
-  border-radius:10px;
-  margin-top:15px;
-  transition:0.5s;
+width:100%;
+border-radius:12px;
+margin-top:20px;
+transition:0.4s;
+cursor:pointer;
 }
 
 .card img:hover{
-  transform:scale(1.05);
-  filter:brightness(1.1);
+transform:scale(1.05);
 }
 
-/* BOTÓN */
+/* COUNTER */
+
+.counter{
+font-size:50px;
+color:var(--accent);
+font-weight:bold;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+@media(max-width:800px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
+/* BUTTON */
+
 .btn{
-  background:#4da6ff;
-  padding:12px 25px;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
-  display:inline-block;
-  margin:30px 0;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#1b6ed6;
-  transform:translateY(-3px);
+display:inline-block;
+margin-top:30px;
+background:linear-gradient(45deg,var(--accent),var(--accent2));
+padding:15px 30px;
+border-radius:10px;
+color:white;
+text-decoration:none;
 }
 
 /* FOOTER */
+
 footer{
-  text-align:center;
-  padding:30px;
-  color:#777;
-  border-top:1px solid #1e3a5f;
-  margin-top:50px;
+text-align:center;
+padding:30px;
+border-top:1px solid var(--accent);
 }
 
-/* ANIMACIONES */
-@keyframes fadeIn{
-  to {opacity:1;}
-}
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <h1>Informe ODS 2025: Alertas en energía y desarrollo</h1>
-</div>
+<div id="particles"></div>
 
-<div class="content">
+<header>
 
-<!-- CARD 1 -->
+<div class="logo">EL ABISMO</div>
+
+<button class="toggle" onclick="toggleMode()">Modo claro / oscuro</button>
+
+</header>
+
+<section class="hero">
+
+<h1>Informe ODS 2025: Energía en riesgo</h1>
+
+</section>
+
+<div class="container">
+
 <div class="card">
-  <h2>Balance global</h2>
-  <p>El Informe ODS 2025 marca el décimo balance anual hacia la Agenda 2030. Aunque se han logrado avances en educación, salud maternoinfantil y reducción de enfermedades, el ritmo actual es insuficiente para cumplir todos los Objetivos para 2030.</p>
-  <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbe5?auto=format&fit=crop&w=1000&q=80" alt="Progreso global">
+
+<h2>Personas sin electricidad</h2>
+
+<div class="counter" id="counter">0</div>
+
+<p>
+
+Más de 666 millones de personas siguen sin acceso a electricidad en el mundo.  
+Esto afecta educación, salud y desarrollo económico.
+
+</p>
+
+<img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e">
+
 </div>
 
-<!-- CARD 2 -->
+
 <div class="card">
-  <h2>Acceso a electricidad</h2>
-  <p>El acceso global a electricidad alcanzó el <b>92% en 2023</b>, frente al 84% en 2010. Sin embargo, <b>666 millones de personas</b> aún no tienen acceso, concentradas en África Subsahariana y comunidades rurales.</p>
-  <ul>
-    <li>45 países lograron acceso universal desde 2010.</li>
-    <li>Asia Central y Meridional redujo población sin electricidad de 414M a 27M.</li>
-    <li>África Subsahariana solo avanzó de 566M a 565M.</li>
-  </ul>
-  <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1000&q=80" alt="Comunidades sin electricidad">
+
+<h2>Acceso global a electricidad</h2>
+
+<canvas id="chart1"></canvas>
+
+<p>
+
+El acceso creció del 84% en 2010 al 92% en 2023.  
+Pero el progreso es desigual.
+
+</p>
+
 </div>
 
-<!-- CARD 3 -->
+
 <div class="card">
-  <h2>Cocinas limpias</h2>
-  <p>El acceso a combustibles y tecnologías limpias para cocinar aumentó del 64% al 74% entre 2015 y 2023. Aun así, <b>1.800 millones</b> de personas dependen de combustibles contaminantes en 2030 si no se acelera el progreso.</p>
-  <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=80" alt="Cocinas limpias">
+
+<h2>Distribución energética mundial</h2>
+
+<canvas id="chart2"></canvas>
+
 </div>
 
-<!-- CARD 4 -->
+
 <div class="card">
-  <h2>Renovables y eficiencia energética</h2>
-  <p>La energía renovable pasó del 15,6% al 17,9% del consumo mundial entre 2015-2022. Las renovables modernas crecieron del 10% al 13%. La hidroeléctrica sigue siendo predominante, pero eólica y solar triplicaron su consumo.</p>
-  <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1000&q=80" alt="Energías renovables">
+
+<h2>Capacidad renovable por región</h2>
+
+<canvas id="chart3"></canvas>
+
 </div>
 
-<!-- CARD 5 -->
+
 <div class="card">
-  <h2>Desigualdades y disparidades</h2>
-  <p>La capacidad instalada de energía renovable per cápita es de 478 W/persona en 2023, pero los países desarrollados tienen 1.162 W y los en desarrollo 341 W. África Subsahariana solo 40 W, mostrando la urgencia de acelerar la transición energética justa.</p>
+
+<h2>Impacto del financiamiento</h2>
+
+<p>
+
+El financiamiento energético alcanzó 21.600 millones USD.  
+Pero aún es insuficiente.
+
+</p>
+
+<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
+
 </div>
 
-<!-- CARD 6 -->
-<div class="card">
-  <h2>Financiamiento energético</h2>
-  <p>Los flujos financieros internacionales para energías limpias alcanzaron <b>21.600 millones USD en 2023</b>, un aumento del 27% respecto a 2022. La energía solar lideró con 9.400 millones USD. Aun así, los fondos siguen insuficientes para los países más vulnerables.</p>
-  <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2?auto=format&fit=crop&w=1000&q=80" alt="Financiamiento energía limpia">
-</div>
 
-<!-- BOTÓN VOLVER -->
 <a href="noticias.html" class="btn">← Volver a Noticias</a>
 
 </div>
 
 <footer>
-© 2026 EL ABISMO | Periodismo de investigación energética
+
+© 2026 EL ABISMO
+
 </footer>
 
 <script>
-// Animación al hacer scroll
-const cards = document.querySelectorAll('.card');
-window.addEventListener('scroll', () => {
-  const scrollLimit = window.pageYOffset + window.innerHeight - 50;
-  cards.forEach(card => {
-    if(scrollLimit > card.offsetTop){
-      card.classList.add('show');
-    }
-  });
+
+/* PARTICLES */
+
+tsParticles.load("particles",{
+
+particles:{
+number:{value:80},
+color:{value:["#ff7a00","#a855f7"]},
+links:{enable:true,color:"#ff7a00"},
+move:{enable:true,speed:1}
+}
+
 });
 
-// Mostrar todas las cards al cargar
-window.addEventListener('load', () => {
-  cards.forEach(card => card.classList.add('show'));
+/* COUNTER */
+
+let count=0;
+let target=666;
+
+let counter=setInterval(()=>{
+
+count++;
+
+document.getElementById("counter").innerText=count+" millones";
+
+if(count>=target) clearInterval(counter);
+
+},10);
+
+
+/* CHART 1 */
+
+new Chart(document.getElementById("chart1"),{
+
+type:"line",
+
+data:{
+labels:["2010","2015","2020","2023"],
+datasets:[{
+label:"Acceso electricidad %",
+data:[84,87,90,92],
+borderColor:"#ff7a00"
+}]
+}
+
 });
+
+
+/* CHART 2 */
+
+new Chart(document.getElementById("chart2"),{
+
+type:"pie",
+
+data:{
+labels:["Electricidad","Sin acceso"],
+datasets:[{
+data:[92,8],
+backgroundColor:["#ff7a00","#a855f7"]
+}]
+}
+
+});
+
+
+/* CHART 3 */
+
+new Chart(document.getElementById("chart3"),{
+
+type:"bar",
+
+data:{
+labels:["Europa","Asia","América","África"],
+datasets:[{
+label:"W por persona",
+data:[1162,650,800,40],
+backgroundColor:"#ff7a00"
+}]
+}
+
+});
+
+
+/* SCROLL */
+
+let cards=document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+
+cards.forEach(card=>{
+
+if(card.getBoundingClientRect().top < window.innerHeight-50){
+
+card.classList.add("show");
+
+}
+
+});
+
+});
+
+
+/* MODE */
+
+function toggleMode(){
+
+document.body.classList.toggle("light");
+
+}
+
 </script>
 
 </body>
 </html>
+
