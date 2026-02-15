@@ -3,235 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Financiamiento energético | El Abismo</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
 <style>
 
-/* ===== RESET ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Roboto', sans-serif;
+/* ===== VARIABLES ===== */
+
+:root{
+--bg:#0a0a0a;
+--card:#111;
+--text:white;
+--accent:#ff9500;
+--accent2:#ffd000;
 }
 
+.light{
+--bg:#f4f4f4;
+--card:white;
+--text:black;
+--accent:#ff6a00;
+--accent2:#ffc400;
+}
+
+/* ===== BASE ===== */
+
 body{
-  background:linear-gradient(180deg,#1a0f00,#0a0500);
-  color:white;
-  overflow-x:hidden;
+margin:0;
+font-family:Roboto;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+overflow-x:hidden;
+}
+
+#particles{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
 }
 
 /* ===== HEADER ===== */
+
 header{
-  padding:20px 40px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(8px);
-  position:sticky;
-  top:0;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:2px solid #ffae00;
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--accent);
 }
 
 .logo{
-  color:#ffae00;
-  font-size:28px;
-  font-weight:bold;
-  letter-spacing:2px;
+font-family:Montserrat;
+font-size:28px;
+color:var(--accent);
 }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:#ffae00;
+.toggle{
+cursor:pointer;
+background:var(--accent);
+border:none;
+padding:10px 20px;
+border-radius:10px;
+font-weight:bold;
 }
 
 /* ===== HERO ===== */
+
 .hero{
-  height:420px;
-  background:url("https://images.unsplash.com/photo-1509395176047-4a66953fd231") center/cover no-repeat;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  padding:40px;
-  position:relative;
+height:400px;
+background:url("https://images.unsplash.com/photo-1509395176047-4a66953fd231") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .hero h1{
-  font-family:'Montserrat', sans-serif;
-  font-size:40px;
-  background:rgba(0,0,0,0.7);
-  padding:20px 30px;
-  border-radius:12px;
-  animation:fadeIn 2s ease forwards;
-  opacity:0;
+background:rgba(0,0,0,0.7);
+padding:20px;
+border-radius:10px;
+animation:fadeIn 2s;
 }
 
 @keyframes fadeIn{
-  to{opacity:1;}
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1;}
 }
 
-/* ===== SECTION ===== */
-.section{
-  padding:60px 20px;
-  max-width:1000px;
-  margin:auto;
+/* ===== CONTAINER ===== */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
 }
+
+/* ===== CARD ===== */
 
 .card{
-  background:#1c0f00;
-  border-left:6px solid #ff7300;
-  padding:30px;
-  margin-bottom:40px;
-  border-radius:15px;
-  box-shadow:0 0 25px rgba(255,115,0,0.2);
-  transform:translateY(40px);
-  opacity:0;
-  transition:0.8s ease;
+background:var(--card);
+padding:30px;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 0 30px rgba(255,150,0,0.2);
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
 }
 
 .card.show{
-  transform:translateY(0);
-  opacity:1;
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-  transform:scale(1.02);
-}
-
-.card h2{
-  color:#ffae00;
-  margin-bottom:15px;
-}
-
-.card p{
-  margin-bottom:15px;
-  line-height:1.7;
-  color:#eee;
+transform:scale(1.02);
 }
 
 .card img{
-  width:100%;
-  border-radius:12px;
-  margin-top:15px;
-  transition:0.5s;
+width:100%;
+border-radius:10px;
+margin-top:15px;
 }
 
-.card img:hover{
-  transform:scale(1.05);
-  filter:brightness(1.1);
-}
+/* ===== COUNTER ===== */
 
-/* ===== PROGRESS BAR ===== */
-.progress-container{
-  margin:30px 0;
-}
-
-.progress-bar{
-  width:0%;
-  height:20px;
-  background:linear-gradient(90deg,#ff7300,#ffae00);
-  border-radius:20px;
-  transition:2s;
+.counter{
+font-size:50px;
+color:var(--accent);
+font-weight:bold;
 }
 
 /* ===== BUTTON ===== */
-.btn{
-  display:inline-block;
-  margin-top:40px;
-  padding:14px 30px;
-  background:#ff7300;
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
-  font-weight:bold;
-  transition:0.3s;
-}
 
-.btn:hover{
-  background:#ffae00;
-  transform:translateY(-3px);
+.btn{
+display:inline-block;
+margin-top:30px;
+background:var(--accent);
+padding:15px 30px;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
 }
 
 /* ===== FOOTER ===== */
-footer{
-  text-align:center;
-  padding:40px;
-  border-top:1px solid #ff7300;
-  margin-top:50px;
-  color:#aaa;
-}
 
-canvas{
-  margin-top:20px;
-  background:#140a00;
-  padding:15px;
-  border-radius:15px;
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid var(--accent);
 }
 
 </style>
 </head>
 <body>
 
+<div id="particles"></div>
+
 <header>
-  <div class="logo">EL ABISMO</div>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="noticias.html">Noticias</a>
-  </nav>
+
+<div class="logo">EL ABISMO</div>
+
+<button class="toggle" onclick="toggleMode()">Modo Claro/Oscuro</button>
+
 </header>
 
 <section class="hero">
-  <h1>Financiamiento energético: ¿Estamos invirtiendo lo suficiente?</h1>
+<h1>Financiamiento energético global</h1>
 </section>
 
-<div class="section">
+<div class="container">
 
 <div class="card">
-<h2>ODS 7 y la brecha financiera</h2>
+<h2>Inversión global</h2>
+
+<div class="counter" id="counter">0</div>
+
 <p>
-El Objetivo de Desarrollo Sostenible 7 plantea garantizar energía asequible y sostenible para todos antes de 2030. Sin embargo, lograr esta meta requiere inversiones masivas en infraestructura eléctrica, energías renovables y tecnologías limpias.
+Millones de dólares invertidos en energía limpia en 2023.
+La inversión energética es clave para garantizar acceso universal y combatir el cambio climático.
 </p>
-<p>
-En 2023, los flujos financieros internacionales destinados a energía limpia en países en desarrollo alcanzaron aproximadamente 21,6 mil millones de dólares. Aunque representa un aumento del 27 % respecto al año anterior, sigue siendo insuficiente frente a las necesidades reales.
-</p>
-<img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9">
+
+<img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d">
+
 </div>
 
 <div class="card">
-<h2>Acceso desigual a la energía</h2>
-<p>
-Más de 660 millones de personas aún viven sin electricidad. Además, alrededor del 74 % de la población mundial tiene acceso a tecnologías de cocina limpia, lo que significa que millones todavía dependen de combustibles contaminantes.
-</p>
-<p>
-La mayor parte de esta brecha se concentra en África Subsahariana y comunidades rurales aisladas, donde la inversión en infraestructura es limitada.
-</p>
-<img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e">
+
+<h2>Progreso mundial</h2>
+
+<canvas id="chart"></canvas>
+
 </div>
 
 <div class="card">
-<h2>Progreso hacia 2030</h2>
-<p>Avance global hacia acceso universal a electricidad:</p>
 
-<div class="progress-container">
-  <div class="progress-bar" id="progressBar"></div>
-</div>
+<h2>Energía renovable</h2>
 
 <p>
-Actualmente el mundo se encuentra alrededor del 92 % de cobertura eléctrica global. Para alcanzar el 100 % antes de 2030, el ritmo de expansión debe acelerarse considerablemente.
+Las energías renovables como solar y eólica son fundamentales para el futuro.
+Permiten reducir emisiones y llevar electricidad a zonas remotas.
 </p>
 
-<canvas id="energyChart"></canvas>
+<img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7">
+
 </div>
 
 <a href="noticias.html" class="btn">← Volver a Noticias</a>
@@ -239,59 +222,70 @@ Actualmente el mundo se encuentra alrededor del 92 % de cobertura eléctrica glo
 </div>
 
 <footer>
-© 2026 EL ABISMO | Análisis energético global
+© EL ABISMO 2026
 </footer>
 
 <script>
 
-/* Scroll Animation */
-const cards = document.querySelectorAll('.card');
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight - 100;
-  cards.forEach(card=>{
-    const top = card.getBoundingClientRect().top;
-    if(top < trigger){
-      card.classList.add('show');
-    }
-  });
+/* ===== PARTICLES ===== */
+
+tsParticles.load("particles", {
+particles:{
+number:{value:60},
+color:{value:"#ff9500"},
+links:{enable:true,color:"#ff9500"},
+move:{enable:true,speed:1}
+}
 });
 
-/* Progress Animation */
-window.addEventListener('load', ()=>{
-  document.getElementById("progressBar").style.width = "92%";
+/* ===== COUNTER ===== */
+
+let count = 0;
+let target = 21600;
+
+let counter = setInterval(()=>{
+count+=200;
+document.getElementById("counter").innerText=count.toLocaleString();
+
+if(count>=target) clearInterval(counter);
+
+},20);
+
+/* ===== CHART ===== */
+
+new Chart(document.getElementById("chart"),{
+
+type:"line",
+
+data:{
+labels:["2010","2015","2020","2023"],
+datasets:[{
+label:"Acceso electricidad %",
+data:[84,87,90,92]
+}]
+}
+
 });
 
-/* Chart */
-const ctx = document.getElementById('energyChart');
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['2010','2015','2020','2023'],
-    datasets: [{
-      label: 'Acceso mundial a electricidad (%)',
-      data: [84,87,90,92],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins:{
-      legend:{
-        labels:{ color:'white' }
-      }
-    },
-    scales:{
-      y:{
-        ticks:{ color:'white' },
-        beginAtZero:true,
-        max:100
-      },
-      x:{
-        ticks:{ color:'white' }
-      }
-    }
-  }
+/* ===== SCROLL ANIMATION ===== */
+
+let cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+cards.forEach(card=>{
+let top = card.getBoundingClientRect().top;
+if(top < window.innerHeight-50){
+card.classList.add("show");
+}
 });
+});
+
+/* ===== DARK MODE ===== */
+
+function toggleMode(){
+document.body.classList.toggle("light");
+}
+
 </script>
 
 </body>
