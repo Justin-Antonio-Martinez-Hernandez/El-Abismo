@@ -2,56 +2,162 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Financiamiento energético | El Abismo</title>
 
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
 <style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Roboto', sans-serif;
+}
 
 body{
-margin:0;
-background:#020617;
-color:white;
-font-family:Segoe UI;
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
 }
 
+/* ===== HEADER ===== */
+header{
+  padding:20px 40px;
+  background:#00000055;
+  backdrop-filter:blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#4da6ff;
+  font-size:28px;
+  font-weight:bold;
+}
+
+/* ===== SECTION ===== */
 .section{
-padding:50px;
+  padding:50px 20px;
 }
 
+h1{
+  font-family:'Montserrat', sans-serif;
+  font-size:36px;
+  color:#4da6ff;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+/* ===== BOX ===== */
 .box{
-background:#0f172a;
-padding:25px;
-margin:20px;
-border-radius:10px;
-transition:0.4s;
+  background:#0f172a;
+  padding:25px;
+  margin:20px;
+  border-radius:10px;
+  transition:0.4s, transform 0.4s;
+  opacity:0;
+  transform:translateY(30px);
+}
+
+.box.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .box:hover{
-background:#1e293b;
-transform:scale(1.02);
+  background:#1e293b;
+  transform:scale(1.03);
 }
 
+/* ===== BUTTON ===== */
+.btn{
+  background:#4da6ff;
+  border:none;
+  padding:12px 25px;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  margin:30px 20px 0 20px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#1b6ed6;
+  transform:translateY(-3px);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  color:#777;
+  border-top:1px solid #1e3a5f;
+  margin-top:50px;
+}
 </style>
 </head>
-
 <body>
 
+<header>
+  <div class="logo">EL ABISMO</div>
+</header>
+
 <div class="section">
+  <h1>ONU impulsa financiamiento energético para cumplir ODS 7</h1>
 
-<h1>ONU impulsa financiamiento energético</h1>
+  <div class="box">
+    🔎 El **Objetivo de Desarrollo Sostenible 7** busca garantizar acceso a una **energía asequible, fiable, moderna y sostenible para todos** antes de 2030. :contentReference[oaicite:1]{index=1}
+  </div>
 
-<div class="box">
-Se busca acelerar la transición energética global.
+  <div class="box">
+    📈 El acceso global a la **electricidad ha mejorado: pasó del 84 % en 2010 a alrededor del 92 % en 2023**. Aun así, más de **645 millones de personas siguen sin electricidad**, especialmente en países de bajos ingresos. :contentReference[oaicite:2]{index=2}
+  </div>
+
+  <div class="box">
+    🔌 El acceso a **cocinas limpias también aumentó** al 74 % en 2023, lo que reduce enfermedades respiratorias y contaminación en hogares. :contentReference[oaicite:3]{index=3}
+  </div>
+
+  <div class="box">
+    💰 La **financiación internacional en energías limpias que llega a países en desarrollo** alcanzó cerca de **21.6 mil millones de dólares en 2023**, pero sigue siendo insuficiente frente a las necesidades reales. :contentReference[oaicite:4]{index=4}
+  </div>
+
+  <div class="box">
+    ⚡️ La **energía renovable crece**, representando una parte cada vez mayor del consumo total de energía, aunque aún queda mucho por hacer para aumentar su cuota global. :contentReference[oaicite:5]{index=5}
+  </div>
+
+  <div class="box">
+    🌍 Las metas del ODS 7 incluyen **incrementar el uso de energías renovables**, duplicar las mejoras en eficiencia energética y **fortalecer la cooperación para investigación, tecnología y financiación**, especialmente en países menos desarrollados. :contentReference[oaicite:6]{index=6}
+  </div>
+
+  <a href="noticias.html" class="btn">← Volver a Noticias</a>
 </div>
 
-<div class="box">
-Inversión clave para energías renovables.
-</div>
+<footer>
+© 2026 EL ABISMO | Periodismo de investigación energética
+</footer>
 
-<div class="box">
-Eliminar combustibles fósiles es inevitable.
-</div>
-
-</div>
+<script>
+// ===== SCROLL ANIMATION =====
+const boxes = document.querySelectorAll('.box');
+window.addEventListener('scroll', () => {
+  const scrollLimit = window.pageYOffset + window.innerHeight - 60;
+  boxes.forEach(b => {
+    if (scrollLimit > b.offsetTop) {
+      b.classList.add('show');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
